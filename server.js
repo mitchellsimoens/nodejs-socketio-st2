@@ -1,5 +1,8 @@
 var express = require('express'),
-    app     = express.createServer(),
+    gzip    = require('connect-gzip'),
+    app     = express.createServer(
+        gzip.gzip()
+    ),
     io      = require('socket.io').listen(app);
 
 app.configure(function () {
