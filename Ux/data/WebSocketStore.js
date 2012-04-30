@@ -5,11 +5,11 @@ Ext.define('Ux.data.WebSocketStore', {
     config : {
         socketId           : true,
         actionEvents       : {
-            create     : 'create_{id}',
-            read       : 'read_{id}',
-            update     : 'update_{id}',
-            destroy    : 'destroy_{id}',
-            batch      : 'batch_{id}',
+            create     : 'create_{socketId}',
+            read       : 'read_{socketId}',
+            update     : 'update_{socketId}',
+            destroy    : 'destroy_{socketId}',
+            batch      : 'batch_{socketId}',
             register   : 'register',
             unregister : 'unregister'
         },
@@ -78,11 +78,11 @@ Ext.define('Ux.data.WebSocketStore', {
     applyActionEvents : function (events) {
         var id = this.getSocketId();
 
-        events.batch   = events.batch  .replace('{id}', id);
-        events.create  = events.create .replace('{id}', id);
-        events.read    = events.read   .replace('{id}', id);
-        events.update  = events.update .replace('{id}', id);
-        events.destroy = events.destroy.replace('{id}', id);
+        events.batch   = events.batch  .replace('{socketId}', id);
+        events.create  = events.create .replace('{socketId}', id);
+        events.read    = events.read   .replace('{socketId}', id);
+        events.update  = events.update .replace('{socketId}', id);
+        events.destroy = events.destroy.replace('{socketId}', id);
 
         return events;
     },
