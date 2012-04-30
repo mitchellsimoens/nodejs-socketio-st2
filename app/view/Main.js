@@ -3,36 +3,67 @@ Ext.define('Test.view.Main', {
     xtype  : 'test-main',
 
     requires : [
-        'Ext.TitleBar',
-        'Ext.Video'
+        'Ext.field.Text',
+        'Test.view.List'
     ],
 
     config: {
-        items : [
+        scrollable : 'vertical',
+        items      : [
             {
-                xtype : 'textfield',
-                label : 'Message',
-                name  : 'message'
+                xtype      : 'test-list',
+                scrollable : false
             },
             {
-                xtype : 'container',
+                xtype       : 'textfield',
+                placeHolder : 'Message',
+                name        : 'message'
+            },
+            {
+                xtype  : 'container',
                 layout : 'hbox',
                 items  : [
                     {
                         xtype  : 'button',
                         flex   : 1,
                         ui     : 'decline',
-                        text   : 'Reset',
-                        action : 'reset'
+                        text   : 'Delete First Record',
+                        action : 'destroyFirst'
+                    },
+                    {
+                        xtype  : 'button',
+                        flex   : 1,
+                        ui     : 'action',
+                        text   : 'Edit First Record',
+                        action : 'editFirst'
+                    }
+                ]
+            },
+            {
+                xtype  : 'container',
+                layout : 'hbox',
+                items  : [
+                    {
+                        xtype  : 'button',
+                        flex   : 1,
+                        ui     : 'confirm',
+                        text   : 'Sync Store',
+                        action : 'syncStore'
                     },
                     {
                         xtype  : 'button',
                         flex   : 1,
                         ui     : 'confirm',
-                        text   : 'Send',
-                        action : 'send'
+                        text   : 'Sync Store (Batched)',
+                        action : 'syncStoreBatch'
                     }
                 ]
+            },
+            {
+                xtype  : 'button',
+                ui     : 'decline',
+                text   : 'Destroy List/Store',
+                action : 'destroyList'
             }
         ]
     }

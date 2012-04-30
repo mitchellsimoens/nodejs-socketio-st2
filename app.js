@@ -1,3 +1,5 @@
+Ext.Loader.setPath('Ux', 'Ux');
+
 Ext.application({
     name: 'Test',
 
